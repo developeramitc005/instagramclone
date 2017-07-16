@@ -1,0 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+#form{
+    border-radius: 30px;
+    background-color: #e7e7e7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 10px;
+}
+
+.col-xs-12{
+      border-bottom:1px solid #d6cece;
+}
+
+.h1{
+    font-family:'Lobster', cursive;
+}

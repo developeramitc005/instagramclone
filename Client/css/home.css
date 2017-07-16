@@ -1,0 +1,31 @@
+h1 {
+    background-color: #ec0a0a;
+}
+div.container{
+    background-color: #e7e7e7;
+    height: 50px;
+    
+}
+
+#search.col-xs-4{
+    padding-top: 10px;
+  
+}
+
+#account{
+    padding-top: 15px;
+}
+
+#search_button,#search.col-xs-4{
+   display: inline-flex;
+}
+
+
+
+#map,#thumbs,#user{
+     display: inline-flex;
+}
+
+#thumbs,#user{
+    padding-left: 20px
+}

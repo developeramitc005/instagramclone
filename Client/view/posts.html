@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>
+            InstaRep
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/home.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            function likeClick(id){
+                Promise.resolve()
+                .then(function(){
+                    return $.post('incrLike', {id : id});
+                })
+                .then(function(like){
+                    $('#like' + like.id).html(like.count);
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            }
+            
+            
+            function onload(){
+                Promise.resolve()
+                .then(function(){
+                    return $.post('posts');  
+                })
+                
+                .then(function(posts){
+                    $('#posts').html('');
+                    posts.forEach(function(post){
+                        $('#posts').append(
+                            '<div data-postId="' + post._id + '">' +
+                            '<img src="' + post.image + '"/>' +
+                            '<p>Like Count: ' + 
+                            '<span id ="like' + post._id + '">' + post.likeCount + '</span>' + 
+                            '</p>' +
+                            '<button onclick="likeClick(\'' + post._id + '\');"><span class="glyphicon glyphicon-heart"></span>Like</button>' +
+                            '</div>'
+                        );
+                    });
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            }
+        </script>
+    </head>
+
+    <body onload="onload();">
+        <section>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <span class="glyphicon glyphicon-camera"></span> InstaRep
+                        </a>
+                    </div>
+                    <form class="navbar-form navbar-left" id="nav-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                             </button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><span class="glyphicon glyphicon-map-marker"></span></li>
+                        <li><span class="glyphicon glyphicon-thumbs-up"></span></li>
+                        <li><span class="glyphicon glyphicon-user"></span></li>
+                    </ul>
+                </div>
+
+            </nav>
+        </section>
+        <div class="container">
+            <div class="feeds">
+                <div class="feed">
+                    <header style="position: relative" class="feed-header">
+                        <div class="user_profile_img">
+                           <img src="../images/profile_pic1.PNG"></img>
+                        </div>
+                        <div class="feed_user_name">
+                            <a class="user_name_link" id="user_title">amitc005</a>
+                        </div>
+                    </header>
+                    <div class="feed_img" id="posts">
+                
+                    </div>
+                    <div class="feed_comment">
+                        <section>
+                            <div>
+                               
+                                <span  class="glyphicon glyphicon-comment"></span>
+                            </div>
+                            <div>
+                                <input type="text" name="" placeholder="comment..."/ class="input_comment">
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
