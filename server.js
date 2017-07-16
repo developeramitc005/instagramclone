@@ -34,7 +34,7 @@ var router = express();
 var server = http.createServer(router);
 
 
-router.use(express.static(path.resolve(__dirname, 'client')));
+router.use(express.static(path.resolve(__dirname, 'Client')));
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -59,20 +59,20 @@ router.use(passport.session());
 userAuth.init(passport);
 
 router.get('/', function(req, res){
-  console.log('client requests root');
+  console.log('Client requests root');
   //use sendfile to send our signin.html file
-  res.sendFile(path.join(__dirname, 'client/view','signin.html'));
+  res.sendFile(path.join(__dirname, 'Client/view','signin.html'));
 });
 
 //tell the router how to handle a get request to the signin page
 router.get('/signin', function(req, res){
-  console.log('client requests signin');
+  console.log('Client requests signin');
   res.redirect('/');
 });
 
 router.get('/join', function(req, res){
-  console.log('client requests join');
-  res.sendFile(path.join(__dirname, 'client/view', 'join.html'));
+  console.log('Client requests join');
+  res.sendFile(path.join(__dirname, 'Client/view', 'join.html'));
 });
 
 router.post('/join', function(req, res, next) {
@@ -85,7 +85,7 @@ router.post('/join', function(req, res, next) {
       //log this user in since they've just joined
       req.logIn(user, function(err){
         if (!err)
-          //send a message to the client to say so
+          //send a message to the Client to say so
           res.json({isValid: true, message: 'welcome ' + user.email});
       });
     }
@@ -106,7 +106,7 @@ router.post('/signin', function(req, res, next) {
       //log this user in
       req.logIn(user, function(err){
         if (!err)
-          //send a message to the client to say so
+          //send a message to the Client to say so
           res.json({isValid: true, message: 'welcome ' + user.email});
       });
     }
@@ -114,21 +114,21 @@ router.post('/signin', function(req, res, next) {
 });
 
 router.get('/posts', userAuth.isAuthenticated, function(req, res){
-  console.log('client requests posts.html');
+  console.log('Client requests posts.html');
   //use sendfile to send our posts.html file
-  res.sendFile(path.join(__dirname, 'client/view','posts.html'));
+  res.sendFile(path.join(__dirname, 'Client/view','posts.html'));
   console.log(req.session.passport.user);
 })
 
 //tell the router how to handle a post request to /posts
 //only do this if this is an authenticated user
 router.post('/posts', userAuth.isAuthenticated, function(req, res){
-  console.log('client requests posts list');
+  console.log('Client requests posts list');
   
   //go find all the posts in the database
   Post.find({})
   .then(function(paths){
-    //send them to the client in JSON format
+    //send them to the Client in JSON format
     res.json(paths);
   })
 });
@@ -155,8 +155,8 @@ router.post('/incrLike', userAuth.isAuthenticated, function(req, res){
 });
 
 router.get('/passwordreset', (req, res) => {
-  console.log('client requests passwordreset');
-  res.sendFile(path.join(__dirname, 'client/view', 'passwordreset.html'));
+  console.log('Client requests passwordreset');
+  res.sendFile(path.join(__dirname, 'Client/view', 'passwordreset.html'));
 });
 
 router.post('/passwordreset', (req, res) => {
