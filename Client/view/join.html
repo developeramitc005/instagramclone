@@ -7,12 +7,14 @@
         <link rel="stylesheet" type = "text/css" href="./css/join.css" />
         <script src="js/bootstrap.min.js"></script>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+         <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
         
         
         <!-- I am including this script directly in the HTML, but usually this would be in its own file  -->
         <script>
             /*global $*/
             function handleJoinAttempt(){
+                $("#submit_button").html('<i class="fa fa-spinner fa-spin"></i>Loading');
                 var email = $('#email').val();
                 var password = $('#password').val();
                 var repeatPassword = $('#repeat_password').val();
@@ -31,12 +33,14 @@
                             $('#email').html('');
                             $('#password').html('');
                             $('#repeat_password').html('');
+                            $("#submit_button").html('JOIN');
                         }
                     })
                     .catch(function(err){
                         console.log(err);
                     })
                 } else {
+                    $("#submit_button").html('JOIN');
                     $('#error').html('Please provide both username and password and ensure passwords match');
                 }
             }
@@ -66,7 +70,7 @@
 				</div>
 
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary" onclick="handleJoinAttempt()">Join</button>
+                    <button id="submit_button" class="btn btn-lg btn-primary" onclick="handleJoinAttempt()">Join</button>
 				</div>
                 
                 <p id="error"></p>

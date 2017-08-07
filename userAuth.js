@@ -5,15 +5,15 @@ const hash = require('./utils/hash.js');
 //encapsulate initialization of the passport functionality
 module.exports.init = function(passport){
 	// Passport needs to be able to serialize and deserialize users to support persistent login sessions
-    passport.serializeUser(function(user, callback) {
+    passport.serializeUser(function(user, done) {
         console.log('serializing user: ' + user.username);
-        callback(null, user._id);
+        done(null, user._id);
     });
 
-    passport.deserializeUser(function(id, callback) {
+    passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
             console.log('deserializing user: ' + user.username);
-            callback(err, user);
+            done(err, user);
         });
     });
 
@@ -39,7 +39,7 @@ module.exports.isAuthenticated = function (req, res, next) {
 }
 
 //passport will call this function when someone attempts to log in
-function handleLoginAttempt(email, password, cb){
+function handleLoginAttempt(email, password, done){
     //don't log user's passwords in plain text to the console in production
     console.log('userAuth: handleLoginAttempt: email: ' + email + ' password: ' + password);
     
@@ -55,17 +55,17 @@ function handleLoginAttempt(email, password, cb){
             //return the user object
             param = user;
         //execute the callback with appropriate parameters
-        cb(null, param);
+        done(null, param);
     })
     .catch(function(err){
         //even if something went wrong, we still need to call the callback
         console.log('userAuth: handleLoginAttempt: exception: ' + err);
-        cb(err);
+        done(err);
     });
 }
 
 //passport will call this function when someone attempts to join
-function handleSignupAttempt(email, password, cb){
+function handleSignupAttempt(email, password, done){
     //don't log user's passwords in plain text to the console in production
     console.log('userAuth: handleSignupAttempt: email: ' + email + ' password: ' + password);
     
@@ -88,15 +88,15 @@ function handleSignupAttempt(email, password, cb){
             })
             .then(function(user){
                 //execute the callback with appropriate parameters
-                cb(null, user);
+                done(null, user);
             })
         } else {
-            cb(null, false);
+            done(null, false);
         }
     })
     .catch(function(err){
         //even if something went wrong, we still need to call the callback
         console.log('userAuth: handleSignupAttempt: exception: ' + err);
-        cb(err);
+        done(err);
     });
 }
