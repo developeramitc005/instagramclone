@@ -8,22 +8,23 @@ module.exports.send = function(to, subject, text){
         port: 465,
         secure: true, // secure:true for port 465, secure:false for port 587
         auth: {
-            user: 'digvijay.yelve000@gmail.com',
-            pass: 'Gigitizer1'
+            user: 'prog8165@gmail.com',
+            pass: 'Prog8165!'
         }
     });
     
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Instagram Clone" digvijay.yelve000@gmail.com', // sender address
+        from: '"Instagram Clone" prog8165@gmail.com', // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
-        text: text // plain text body
+        html: text // plain text body
     };
     
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            console.log("error while sending email");
             return console.log(error);
         }
         console.log('Message %s sent: %s', info.messageId, info.response);

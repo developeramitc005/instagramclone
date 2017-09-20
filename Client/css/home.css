@@ -1,31 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif');
 body{
-    background-color: yellow;
+    background:#fff;
 }
-#container{
-    background-color: #FFF;
-width: 100%;
-}
-
-
+header{
+    background:#FAFAFA;
+       }
+       
 #navbar{
     background: #efefef;
     position: fixed;
-    width: 81.7%;
+    width: 100%;
     z-index: 1;
+       
 }
-#search.col-xs-4{
-    padding-top: 10px;
-    width: 25%;
+div#navbar.col-xs-12{
+     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+}
+div#head_icon{
+       
+    /* max-width: 2000px; */
+    padding: 0px 100px;
+   width: 100%;
+
+}
+
+a.navbar-brand{
+    font-family: 'Lobster', cursive; 
+  font-size: x-large;
+    position: initial;
+    color: #010735
+    
+}
+
+div#search{
+    padding-bottom: 10px;
+    display: inline-flex;
+   width: 33%;
   
 }
 
 #account{
     padding-top: 15px;
+    float: right;
+    left: 100px;
+        width: 33%;
 }
-
-#search_button,#search.col-xs-4{
-   display: inline-flex;
+ul{
+    float: right;
+}
+#search_button{
+   display: list-item;
 }
 
 #map,#thumbs,#user{
@@ -47,48 +72,58 @@ width: 100%;
 #icon-menu > ul {
     float: right;
 }
-
 #feeds{
-    background-color: red;
-    position: absolute;
-   padding-top: 50px;
+    background-color: #FAFAFA;
+    position: relative;
+    padding-top: 50px;
     top: 50px;
-    height: 100%;
     width: 100%;
     bottom: 0;
+    margin:auto;
+    
 }
-#feed
+.feed
     {
-        background-color: blue;
         margin: 0 auto;
         width: 500px;
-        height: 500px;
-        border: 1px solid #ccc;
+        border: 1px solid #d2d2d2;
         border-radius: 3px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 30px;
+        
     }
     
     header.feed-header{
         padding: 15px;
+        border-bottom:2px solid #d6cece;
     }
    div.user_profile_img{
         display: inline-block;
-        border-radius: 50%;
+        border-radius: 80%;
         height:30px;
         width:30px;
-     background-color: gainsboro;
+     background-color: red;
      position :relative;
-     top:4px;
+     top:0px;
        margin-right:5px;
+    }
+    
+    .user_profile_img#img{
+            border-radius: 50%;
     }
     
     div.feed_user_name_info{
         display: inline-block;
-        
+         top:5px;
+        font-family: 'Bree Serif', serif;
+        position: relative;
     }
     div.name{
         font-size: 14px;
-        color: yellow;
-        font-weight: 700;
+        color: #010735;
+        font-weight: 500;
         font-family: 'Bree Serif', serif;
     }
     div.location{
@@ -97,14 +132,105 @@ width: 100%;
     }
    div.feed_time{
         display: inline-block;
-        font-size: 10px;
+        font-size: 14px;
         float: right;
         font-family: 'Bree Serif', serif;
-       position: relative;
-    top: 10px;
+   color:#010735;
+    top: 5px;
+    font-weight: 500;
+    position: relative;
+
     }
     
-    div.feed_img.img{
-            width:100%;
+    img{
+        width:100%;
     }
     
+    .ppic{
+        border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    }
+    .posts{
+      
+    }
+    
+#float-upload-button{
+    position: fixed;
+    bottom: 30px;
+        padding-left: 30px;
+}
+.like_section{
+    display: block;
+    padding: 10px;
+}
+
+section.like_section a{
+  padding: 10px;
+  font-size: 1.8em;
+  text-decoration: none;
+  font-weight: 600;
+}
+    
+.dropzone{
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+}
+
+.dropzone.dragover{
+    border-color: #000;
+    color:#000;
+    
+}
+
+.hightlight{
+    -webkit-box-shadow: 1px 1px 16px 0px rgba(116, 153, 125, 0.75);
+    -moz-box-shadow:    1px 1px 16px 0px rgba(116, 153, 125, 0.75);
+    box-shadow:         1px 1px 16px 0px rgba(116, 153, 125, 0.75);
+}
+
+
+#closePreview{
+    color: #fff;
+}
+
+
+.file_upload_btn{
+    position: relative;
+    top: 30px;
+    left: -65px;
+    color: #000;
+   /*// font-size: 1.6em;*/
+}
+
+.file_upload_btn:hover{
+    /*//font-size: 1.8em;*/
+}
+
+.form-container{
+    position:relative;
+    top: -200px;
+    left: 300px;
+}
+
+.form-container > *{
+    margin-left: 10px;
+}
+
+.uploadFile {
+   visibility : hidden;
+   width: 0px;
+   height: 0px;
+}
+
+.png {
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+}
+
+.likes-section{
+    height : 30px;
+}

@@ -3,7 +3,7 @@
 body,html{
  width:100%;
  height:100%;
- background:#6D86B8;
+ background:#43464b;
 }
 
 .home{
@@ -40,7 +40,7 @@ body,html{
   padding: 2px;
   line-height: 80px;
   font-size: 50px;
-
+box-shadow: 0 1px 2px 0 rgba(253, 12, 12, 0.1), 0 1px 5px 0 rgba(39, 8, 8, 0.83);
   
 }
 
@@ -48,6 +48,7 @@ body,html{
   font-family: 'Lobster', cursive;
     font-size: 30px;
     color: #43464B;
+    text-shadow: 1px 1px 0px rgba(150, 150, 150, 1);
 }
 input[type=text],
 input[type=password]
@@ -72,6 +73,7 @@ input[type=password]
 background:#ff3366;
 border-radius: 30px;
 padding: 10px;
+box-shadow: 0 1px 2px 0 rgba(253, 12, 12, 0.1), 0 1px 5px 0 rgba(39, 8, 8, 0.83);
 }
 input[type=text]:focus
 {
@@ -94,4 +96,47 @@ input[type=password]:focus
 .text-center:hover{
   color: #e20303;
   text-decoration: none;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
 }

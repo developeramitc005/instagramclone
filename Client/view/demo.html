@@ -23,10 +23,10 @@
         
                 // Get form
                 var form = $('#fileUploadForm')[0];
-        
+            
         		// Create an FormData object
                 var data = new FormData(form);
-        
+                console.log(data)
         		// If you want to add an extra field for the FormData
                 data.append("CustomField", "This is some extra data, testing");
         

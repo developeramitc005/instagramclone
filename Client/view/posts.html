@@ -2,98 +2,96 @@
 <html>
 
 <head>
-    <title>
-        InstaRep
-    </title>
+    <meta charset="utf-8">
+    <title>InstaRep</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-        function likeClick(id) {
-            Promise.resolve()
-                .then(function() {
-                    return $.post('incrLike', { id: id });
-                })
-                .then(function(like) {
-                    $('#like' + like.id).html(like.count);
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
-        }
-
-
-        function onload() {
-            Promise.resolve()
-                .then(function() {
-                    return $.post('posts');
-                })
-
-                .then(function(posts) {
-                    $('#posts').html('');
-                    posts.forEach(function(post) {
-                        $('#posts').append(
-                            '<div data-postId="' + post._id + '">' +
-                            '<img src="' + post.image + '"style="width:100px;"/>' +
-                            '<p>Like Count: ' +
-                            '<span id ="like' + post._id + '">' + post.likeCount + '</span>' +
-                            '<span id ="time' + post._id + '">' + post.postTimeStamp + '</span>' +
-                            '</p>' +
-                            '<button onclick="likeClick(\'' + post._id + '\');"><span class="glyphicon glyphicon-heart"></span>Like</button>' +
-                            '</div>'
-                        );
-                    });
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
-        }
-    </script>   
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="../js/home.js"></script>
 </head>
 
-<body onload="onload();">
-    <div class="container-fluid">
-        <div class="container-fluid" id="navbar">
-            <div class="col-xs-4">
-                <a class="navbar-brand">
-                    <span class="glyphicon glyphicon-camera"></span>InstaRep</a>
-            </div>
-            <div class="col-xs-4" id="search">
-                <input type="text" class="form-control" placeholder="Search" />
-                <button class="btn btn-default" type="submit" id="search_button">
+<body>
+    <header>
+
+        <div class="col-xs-12" id="navbar" style="
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 4px 10px 0 rgba(0, 0, 0, 0.1);">
+            <div id="head_icon">
+                <div style="display: inline-flex; width: 33%;">
+                    <a class="navbar-brand">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></span>InstaRep</a>
+                </div>
+                <div id="search">
+                    <input type="text" class="form-control" placeholder="Search" style="text-align: center" />
+                    <button class="btn btn-default" type="submit" id="search_button">
                          <i class="glyphicon glyphicon-search" ></i>
                  </button>
-            </div>
-            <div class="col-xs-4  container-fluid " id="account">
-                <ul>
-                    <li id="map"><span class="glyphicon glyphicon-map-marker"></span></li>
-                    <li id="thumbs"><span class="glyphicon glyphicon-thumbs-up"></span></li>
-                    <li id="user"><span class="glyphicon glyphicon-user"></span></li>
-                </ul>
-            </div>
-        </div>
-        <section class="container-fluid" id="feeds">
-            <div class="container-fluid" id="feed">
-                <header class="feed-header">
-                    <div class="user_profile_img">
-                        <img src=""></img>
-                    </div>
-                    <div class="feed_user_name_info">
-                       <div class="name">amitc005</div>
-                       <div class="location">
-                       Canada
-                    </div>
-                    </div>
-                    
-                    <div class="feed_time">1hr</div>
-                </header>
-                <div class="feed_img" id="posts">
-                     <img src="../images/profile_pic.png"></img>
+                </div>
+                <div class="container-fluid " id="account">
+                    <ul>
+                        <li id="map"><span class="glyphicon glyphicon-map-marker"></span></li>
+                        <li id="thumbs"><span class="glyphicon glyphicon-thumbs-up"></span></li>
+                        <li id="user" data-toggle="tooltip" data-placement="bottom" title="Logout!"><a href="\logout"><span class="glyphicon glyphicon-user"></span></a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
+    <section class="container-fluid" id="feeds">
+
+
+    </section>
+    <div id="float-upload-button">
+        <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" data-toggle="tooltip" data-placement="top" title="Upload Image" id="upload_img_btn">
+                    <i class="glyphicon glyphicon-upload"></i>
+                </button>
     </div>
+
+    <div id="uplaod_img_modal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload Imager</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="dropzone" id="dropzone">
+                        Drop File Here
+                        <div class="container-fluid form-container">
+                            <form id="form-inline" enctype="multipart/form-data" method="post">
+                                <input type="file" name="files" id="uploadFile" multiple accept="image/*" class="uploadFile" />
+                                <span class="btn btn-default btn-file" id="file_broswer"><i class="fa fa-upload" aria-hidden="true"></i></span>
+                                <button class="btn btn-default" id="upload_photo_btn">Upload</button>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    <div id="like_list_modal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    People Liked
+                </div>
+                <div class="modal-body" id="like_list">
+                    
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+
 </body>
 
 </html>

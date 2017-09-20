@@ -4,9 +4,11 @@ var mongoose = require('mongoose');
 //we're building a POST object model in mongoose that we'll use elsewhere
 module.exports = mongoose.model('Post', {
    userId: String, //_id from the user table
+   userName: String,
    image: String, //url to image file
    comment: String, //poster's comment
    likeCount: Number, //number of likes (convenience value)
    feedbackCount: Number, //number of comments from others (convenience value)
-   postTimeStamp: { type    : Date, default : Date.now}
+   hasLiked: Boolean,
+   postTimeStamp: { type: Date, default: Date.now}
 });

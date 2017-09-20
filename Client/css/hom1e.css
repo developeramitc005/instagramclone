@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+body{
+    background-color: yellow;
+}
+#container{
+    background-color: #FFF;
+width: 100%;
+}
+
+
+#navbar{
+    background: #efefef;
+    position: fixed;
+    width: 81.7%;
+    z-index: 1;
+}
+#search.col-xs-4{
+    padding-top: 10px;
+    width: 25%;
+  
+}
+
+#account{
+    padding-top: 15px;
+}
+
+#search_button,#search.col-xs-4{
+   display: inline-flex;
+}
+
+#map,#thumbs,#user{
+     display: inline-flex;
+}
+
+#thumbs,#user{
+    padding-left: 20px
+}
+
+#icon-menu{
+    
+    max-width: 700px;
+    width: 300px;
+    position: relative;
+    margin-left: 00px;
+}
+
+#icon-menu > ul {
+    float: right;
+}
+
+#feeds{
+    background-color: red;
+    position: absolute;
+   padding-top: 50px;
+    top: 50px;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+}
+#feed
+    {
+        background-color: blue;
+        margin: 0 auto;
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    
+    header.feed-header{
+        padding: 15px;
+    }
+   div.user_profile_img{
+        display: inline-block;
+        border-radius: 50%;
+        height:30px;
+        width:30px;
+     background-color: gainsboro;
+     position :relative;
+     top:4px;
+       margin-right:5px;
+    }
+    
+    div.feed_user_name_info{
+        display: inline-block;
+        
+    }
+    div.name{
+        font-size: 14px;
+        color: yellow;
+        font-weight: 700;
+        font-family: 'Bree Serif', serif;
+    }
+    div.location{
+        font-size:12px;
+        color:111;
+    }
+   div.feed_time{
+        display: inline-block;
+        font-size: 10px;
+        float: right;
+        font-family: 'Bree Serif', serif;
+       position: relative;
+    top: 10px;
+    }
+    
+    div.feed_img.img{
+            width:100%;
+    }
+    
